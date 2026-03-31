@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ersen Joseph | Ocean Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #dce8ec;
+      --card-bg: #ffffff;
+      --sidebar-bg: #ffffff;
+      --link: #2e7d9e;
+      --link-hover: #1a5c78;
+      --text: #222;
+      --muted: #555;
+      --border: #e0e0e0;
+      --heading: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      height: 52px;
+      gap: 2rem;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--heading);
+      text-decoration: none;
+      margin-right: auto;
+    }
+
+    nav a {
+      font-size: 0.92rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--link);
+      border-bottom-color: var(--link);
+    }
+
+    /* LAYOUT */
+    .page {
+      display: flex;
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 72px 1.5rem 3rem;
+      align-items: flex-start;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 64px;
+    }
+
+    .sidebar-card {
+      background: var(--sidebar-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .sidebar-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      background: #d0dde3;
+    }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background: #c8d8de;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: #8aacb8;
+      font-size: 0.8rem;
+    }
+
+    .photo-placeholder svg {
+      width: 44px; height: 44px;
+      stroke: #8aacb8; fill: none; stroke-width: 1.2;
+    }
+
+    .sidebar-info {
+      padding: 1.1rem 1.25rem 1.4rem;
+    }
+
+    .sidebar-info h1 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 0.2rem;
+      line-height: 1.2;
+    }
+
+    .sidebar-info .role {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 0;
+    }
+
+    .sidebar-links {
+      list-style: none;
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .sidebar-links li {
+      font-size: 0.88rem;
+      color: #444;
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    .sidebar-links li.plain::before { content: none; }
+
+    .sidebar-links li:not(.plain)::before {
+      content: '›';
+      color: var(--link);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .sidebar-links a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    .sidebar-links a:hover { text-decoration: underline; }
+
+    /* MAIN CONTENT */
+    .main {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 1.75rem 2rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin-bottom: 0.9rem;
+    }
+
+    .card p {
+      color: #333;
+      margin-bottom: 0.6rem;
+      font-size: 0.97rem;
+    }
+    .card p:last-child { margin-bottom: 0; }
+
+    .card ul {
+      padding-left: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .card ul li {
+      color: #333;
+      font-size: 0.97rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .card a { color: var(--link); text-decoration: none; }
+    .card a:hover { text-decoration: underline; }
+
+    /* Sub-headings inside cards */
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--heading);
+      margin: 1.2rem 0 0.4rem;
+    }
+    .card h3:first-child { margin-top: 0; }
+
+    /* Roles list */
+    .roles-list { list-style: none; padding-left: 0; }
+    .roles-list li {
+      font-size: 0.97rem;
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.25rem;
+      color: #333;
+    }
+    .roles-list li::before {
+      content: '›';
+      position: absolute; left: 0;
+      color: var(--link);
+      font-weight: 700;
+    }
+
+    /* Globe / image inside card */
+    .card-image {
+      margin-top: 1rem;
+      border-radius: 6px;
+      overflow: hidden;
+      max-width: 420px;
+    }
+    .card-image img { width: 100%; display: block; }
+
+    /* Projects */
+    .project-item { margin-bottom: 1.3rem; }
+    .project-item:last-child { margin-bottom: 0; }
+    .project-meta {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.1rem;
+      font-style: italic;
+    }
+    .project-item h3 {
+      margin-top: 0 !important;
+      margin-bottom: 0.2rem;
+    }
+    .project-item p { margin-bottom: 0; }
+
+    /* Publications */
+    .pub-item { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.6; }
+    .pub-item:last-child { margin-bottom: 0; }
+    .pub-title { font-weight: 700; color: var(--heading); }
+    .pub-venue { color: var(--muted); font-style: italic; }
+
+    /* Updates */
+    .updates-list { list-style: none; padding-left: 0; }
+    .updates-list li {
+      padding: 0.35rem 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .updates-list li:last-child { border-bottom: none; }
+    .year { font-weight: 700; color: var(--link); margin-right: 0.35rem; }
+
+    /* Contact */
+    .contact-info { font-size: 0.97rem; color: #333; }
+    .contact-info p { margin-bottom: 0.4rem; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.78rem;
+      color: #8aacb8;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .page { flex-direction: column; padding: 64px 1rem 2rem; }
+      .sidebar { width: 100%; position: static; }
+      nav { gap: 1rem; padding: 0 1rem; }
+      .nav-brand { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">Ersen Joseph</a>
+    <a href="#about" class="active">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+    <a href="#updates">Updates</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <!-- Replace this div with: <img src="material/headshot.jpg" alt="Ersen Joseph" class="sidebar-photo"> -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          Add your photo
+        </div>
+        <div class="sidebar-info">
+          <h1>Ersen Joseph</h1>
+          <p class="role">Engineer II<br>
+          Upper Ocean Processes Group<br>
+          Woods Hole Oceanographic Institution</p>
+          <ul class="sidebar-links">
+            <li class="plain">📍 Woods Hole, Massachusetts</li>
+            <li><a href="mailto:ejoseph@whoi.edu">ejoseph@whoi.edu</a></li>
+            <li><a href="https://www2.whoi.edu/staff/" target="_blank">WHOI Profile</a></li>
+            <li><a href="https://uop.whoi.edu" target="_blank">UOP Group</a></li>
+            <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+            <li><a href="material/CV.pdf">CV (PDF)</a></li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- ABOUT -->
+      <div class="card" id="about">
+        <h2>About</h2>
+        <p>
+          I am an Engineer II in the Upper Ocean Processes Group at the Woods Hole Oceanographic Institution (WHOI), where I design, simulate, and deploy oceanographic mooring systems across multiple ocean basins. My work spans dynamic mooring analysis, computational fluid dynamics, and autonomous surface vehicle operations in support of sustained ocean observation.
+        </p>
+        <p>
+          My M.S. research at UMass Dartmouth focused on vortex-induced vibration (VIV) suppression in marine stretch hose moorings using helical grooves, demonstrating up to 90% VIV reduction and ~30% drag reduction through large-eddy simulation (LES) CFD.
+        </p>
+        <p>
+          I am motivated by the intersection of precision engineering and ocean science — particularly where robust infrastructure enables long-term environmental monitoring, including passive acoustic monitoring for North Atlantic Right Whale populations.
+        </p>
+
+        <h3>Research Interests</h3>
+        <ul>
+          <li>Deep-water and shallow-water mooring system design and analysis</li>
+          <li>Computational fluid dynamics (CFD) for marine structures</li>
+          <li>Vortex-induced vibration (VIV) suppression</li>
+          <li>Autonomous surface vehicle (ASV) operations</li>
+          <li>Ocean observing systems and buoy technology</li>
+        </ul>
+
+        <h3>Current Roles</h3>
+        <ul class="roles-list">
+          <li>Engineer II, <a href="https://uop.whoi.edu" target="_blank">WHOI Upper Ocean Processes Group</a></li>
+          <li>Mooring analyst, <a href="https://uop.whoi.edu/currentprojects/SAFARI/SAFARI.html" target="_blank">UOP SAFARI Project</a></li>
+          <li>Mooring analyst, Endurance Energy Mooring (OOI / Juan de Fuca Ridge)</li>
+        </ul>
+
+        <h3>Programs</h3>
+        <ul class="roles-list">
+          <li><a href="https://uop.whoi.edu" target="_blank">WHOI Upper Ocean Processes Group</a></li>
+          <li><a href="https://uop.whoi.edu/currentprojects/SAFARI/SAFARI.html" target="_blank">UOP SAFARI Project</a></li>
+          <li><a href="https://oceanobservatories.org" target="_blank">Ocean Observatories Initiative (OOI)</a></li>
+        </ul>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="card" id="projects">
+        <h2>Projects</h2>
+
+        <div class="project-item">
+          <p class="project-meta">Deep-water mooring · ~6,000 m · North Pacific · ONR-funded · Joint WHOI–Scripps</p>
+          <h3>SAFARI Mooring System</h3>
+          <p>Dynamic mooring analysis for a deep-water mooring at ~6,000 m in the North Pacific. Assessed Wirewalker downweight configurations, developed JONSWAP sea state load cases, and identified critical failure risks in conventional downweight setups at full ocean depth.</p>
+        </div>
+
+        <div class="project-item">
+          <p class="project-meta">Shallow-water mooring · 32 m · Nantucket Sound · DOE-funded</p>
+          <h3>WFIP-3 LiDAR Buoy Mooring</h3>
+          <p>Engineered a shallow-water mooring for an offshore wind LiDAR buoy in Nantucket Sound. Balanced simulation recommendations against site footprint constraints, producing a functional mooring with documented hardware stress margins.</p>
+        </div>
+
+        <div class="project-item">
+          <p class="project-meta">Mooring analysis · ~2,300 m · Juan de Fuca Ridge · In progress</p>
+          <h3>Endurance Energy Mooring</h3>
+          <p>Ongoing ProteusDS dynamic mooring analysis for a MOBS single-leg surface expression mooring near the Juan de Fuca Ridge. Developing current velocity profiles from OOI RCA ADCP data, including surface extrapolation and formal load case documentation.</p>
+        </div>
+
+        <div class="project-item">
+          <p class="project-meta">CFD simulation · ANSYS Fluent · JTECH</p>
+          <h3>APEX Float Vortex Shedding Investigation</h3>
+          <p>CFD investigation into Strouhal-frequency vortex shedding driving ~0.3 Hz accelerometer oscillations in APEX profiling floats. Included geometry reconstruction in Inventor, poly-hexcore meshing (~1.54 M cells), steady RANS (SST k-ω), and transient URANS analysis.</p>
+        </div>
+
+        <div class="project-item">
+          <p class="project-meta">Subsurface mooring · 40–80 m · OMI Ghana</p>
+          <h3>Ghana Subsurface Mooring Analysis</h3>
+          <p>Engineering analysis for subsurface moorings at three depths (40/60/80 m). Produced knockdown analysis, current profiles, float buoyancy assessments, and pass/fail documentation. Developed a field installation guide for UT30 met tower concrete foundations.</p>
+        </div>
+
+        <div class="project-item">
+          <p class="project-meta">M.S. thesis · UMass Dartmouth · LES CFD</p>
+          <h3>VIV Suppression in Marine Stretch Hose Moorings</h3>
+          <p>Graduate research using large-eddy simulation to evaluate helical groove geometry for VIV suppression in marine stretch hose moorings. Demonstrated up to 90% VIV and lift force reduction alongside ~30% drag reduction.</p>
+        </div>
+      </div>
+
+      <!-- PUBLICATIONS -->
+      <div class="card" id="publications">
+        <h2>Publications &amp; Reports</h2>
+
+        <div class="pub-item">
+          <span class="pub-title">SAFARI and WFIP-3 Mooring Case Studies: Lessons from Deep and Shallow-Water Deployments.</span>
+          Joseph, E. (2026).
+          <span class="pub-venue">Buoy Workshop 2026</span>, oral presentation.
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-title">SAFARI Deep-Water Mooring Analysis Report.</span>
+          Joseph, E. et al. (2025).
+          <span class="pub-venue">WHOI Technical Report, Upper Ocean Processes Group.</span>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-title">CFD Analysis Supporting APEX Float Vortex Shedding Investigation.</span>
+          Supporting analysis — Le Boyer et al. (2025).
+          <span class="pub-venue">Journal of Atmospheric and Oceanic Technology (JTECH).</span>
+          <a href="#" target="_blank">[link]</a>
+        </div>
+
+        <div class="pub-item">
+          <span class="pub-title">Helical Groove Geometry for VIV Suppression in Marine Stretch Hose Moorings: A Large-Eddy Simulation Study.</span>
+          Joseph, E.
+          <span class="pub-venue">M.S. Thesis, University of Massachusetts Dartmouth.</span>
+        </div>
+      </div>
+
+      <!-- UPDATES -->
+      <div class="card" id="updates">
+        <h2>Selected Updates</h2>
+        <ul class="updates-list">
+          <li><span class="year">2026:</span> Promoted to Engineer II, WHOI Upper Ocean Processes Group.</li>
+          <li><span class="year">2026:</span> Presented SAFARI &amp; WFIP-3 mooring case studies at Buoy Workshop 2026.</li>
+          <li><span class="year">2025:</span> NASA Group Achievement Award.</li>
+          <li><span class="year">2025:</span> Completed SAFARI deep-water mooring analysis report.</li>
+          <li><span class="year">2025:</span> ANSYS Fluent CFD investigation of APEX profiling float vortex shedding.</li>
+        </ul>
+      </div>
+
+      <!-- CONTACT -->
+      <div class="card" id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+          <p><a href="mailto:ejoseph@whoi.edu">ejoseph@whoi.edu</a></p>
+          <p>Upper Ocean Processes Group<br>
+          Woods Hole Oceanographic Institution<br>
+          Woods Hole, MA 02543</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer>© Ersen Joseph · Woods Hole Oceanographic Institution</footer>
+
+  <script>
+    // Highlight active nav link on scroll
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    });
+  </script>
+
+</body>
+</html>
