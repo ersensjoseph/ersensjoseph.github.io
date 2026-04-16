@@ -4,22 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ersen'S Joseph | Mechanical Engineer</title>
-  <meta name="description" content="Ersen'S Joseph | Mechanical Engineer at Woods Hole Oceanographic Institution" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
 
     :root {
       --bg: #dbe8ec;
       --card: #ffffff;
       --text: #222;
       --muted: #5c6670;
-      --line: #e4eaee;
       --accent: #2e7d9e;
-      --accent-dark: #1c5f7a;
       --shadow: 0 2px 10px rgba(20, 40, 55, 0.08);
       --radius: 10px;
       --max: 1120px;
@@ -30,479 +26,179 @@
       font-family: "Source Sans 3", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-size: 16px;
-      line-height: 1.65;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--accent-dark);
-      text-decoration: underline;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     .nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 1000;
       height: 54px;
       display: flex;
       align-items: center;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      backdrop-filter: blur(8px);
+      background: white;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
     }
 
     .nav-inner {
       width: min(var(--max), calc(100% - 2rem));
       margin: 0 auto;
       display: flex;
-      align-items: center;
-      gap: 1.6rem;
+      gap: 1.5rem;
     }
 
     .brand {
       margin-right: auto;
-      color: #1a1a1a;
-      font-size: 1.05rem;
       font-weight: 700;
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.2rem;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: #2a2a2a;
-      font-size: 0.92rem;
       font-weight: 600;
-      border-bottom: 2px solid transparent;
-      padding-bottom: 2px;
-      transition: color 0.15s ease, border-color 0.15s ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-      text-decoration: none;
     }
 
     .page {
       width: min(var(--max), calc(100% - 2rem));
       margin: 0 auto;
-      padding: 72px 0 40px;
+      padding: 72px 0;
       display: grid;
-      grid-template-columns: 290px minmax(0, 1fr);
-      gap: 1.25rem;
-      align-items: start;
-    }
-
-    .sidebar {
-      position: sticky;
-      top: 66px;
+      grid-template-columns: 280px 1fr;
+      gap: 1.2rem;
     }
 
     .card {
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .sidebar-hero {
-      margin-bottom: 1.25rem;
-    }
-
-    .banner {
-      position: relative;
-      aspect-ratio: 16 / 5;
-      overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      margin-bottom: 1.25rem;
-      background: linear-gradient(135deg, #87a9ba, #557789);
-    }
-
-    .banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .banner-caption {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 0.55rem 0.85rem;
-      font-size: 0.8rem;
-      color: #fff;
-      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
-    }
-
-    .profile-placeholder,
-    .profile-photo {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      background: #c8d8de;
-      display: grid;
-      place-items: center;
-      color: #6f8d99;
-      font-size: 0.9rem;
-      font-weight: 600;
     }
 
     .sidebar-body {
-      padding: 1.1rem 1.2rem 1.3rem;
+      padding: 1.2rem;
     }
 
-    .sidebar-body h1 {
-      margin: 0;
-      font-size: 1.35rem;
-      line-height: 1.15;
-      color: #1a1a1a;
-    }
-
-    .sidebar-role {
-      margin: 0.35rem 0 0.9rem;
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.45;
+    .profile-placeholder {
+      height: 200px;
+      background: #c8d8de;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6f8d99;
     }
 
     .sidebar-links {
       list-style: none;
       padding: 0;
       margin: 0;
-      display: grid;
-      gap: 0.35rem;
-      font-size: 0.9rem;
-      color: #444;
+      font-size: 0.95rem;
     }
 
+    /* 🔥 arrows removed here */
     .sidebar-links li {
-      display: flex;
-      gap: 0.35rem;
-      align-items: baseline;
-    }
-
-    .sidebar-links li:not(.plain)::before {
-      content: "›";
-      color: var(--accent);
-      font-weight: 700;
-      flex-shrink: 0;
+      margin-bottom: 0.4rem;
     }
 
     .main {
-      min-width: 0;
       display: grid;
-      gap: 1.25rem;
+      gap: 1.2rem;
     }
 
     .section-card {
-      padding: 1.7rem 1.9rem;
+      padding: 1.5rem;
     }
 
-    h2 {
-      margin: 0 0 0.8rem;
-      font-size: 1.3rem;
-      line-height: 1.2;
-      color: #1a1a1a;
-    }
-
-    h3 {
-      margin: 1.1rem 0 0.4rem;
-      font-size: 1rem;
-      color: #1f2930;
-    }
-
-    p {
-      margin: 0 0 0.65rem;
-      color: #2d353b;
-      font-size: 0.98rem;
-    }
-
-    p:last-child {
-      margin-bottom: 0;
-    }
-
-    ul {
-      margin: 0;
-      padding-left: 1.3rem;
-    }
-
-    li {
-      margin-bottom: 0.28rem;
-      color: #2d353b;
-      font-size: 0.97rem;
-    }
-
-    .split {
-      display: block;
-    }
-
-    .image-box {
-      border-radius: 8px;
-      overflow: hidden;
-      background: #d3e1e7;
-      max-width: 420px;
-    }
-
-    .image-box img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .small-note {
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-top: 0.45rem;
-    }
-
-    .plain-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .plain-list li {
-      position: relative;
-      padding-left: 1rem;
-    }
-
-    .plain-list li::before {
-      content: "›";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .project-item {
-      margin-bottom: 1.15rem;
-    }
-
-    .project-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .project-meta {
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-style: italic;
-      margin-bottom: 0.08rem;
-    }
-
-    .project-item h3 {
-      margin: 0 0 0.2rem;
-      font-size: 1.03rem;
-    }
-
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.9rem;
-    }
-
-    .photo-tile {
-      display: block;
-      border-radius: 8px;
-      overflow: hidden;
-      background: #d2dfe5;
-    }
-
-    .photo-tile img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .photo-caption {
-      padding: 0.45rem 0.55rem 0.55rem;
-      font-size: 0.85rem;
-      color: #37434b;
-      background: #f7fafb;
-    }
-
-    .updates-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .updates-list li {
-      padding: 0.35rem 0;
-      border-bottom: 1px solid #f0f3f5;
-      margin: 0;
-    }
-
-    .updates-list li:last-child {
-      border-bottom: none;
-    }
-
-    .year {
-      color: var(--accent);
-      font-weight: 700;
-      margin-right: 0.35rem;
-    }
+    h2 { margin-top: 0; }
 
     footer {
       text-align: center;
-      padding: 0 1rem 1.6rem;
-      color: #7a8d97;
       font-size: 0.8rem;
-    }
-
-    @media (max-width: 860px) {
-      .page,
-      .split {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
-    }
-
-    @media (max-width: 680px) {
-      .nav {
-        height: auto;
-      }
-
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 0.7rem;
-        padding: 0.8rem 0;
-      }
-
-      .brand {
-        margin-right: 0;
-      }
-
-      .page {
-        padding-top: 92px;
-      }
-
-      .photo-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-card {
-        padding: 1.25rem;
-      }
+      color: #777;
+      padding: 1rem;
     }
   </style>
 </head>
+
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="#top" class="brand">Ersen'S Joseph</a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#about" class="active">About</a>
-        <a href="#research">Research</a>
-        <a href="#projects">Projects</a>
-         <a href="#roles">Projects</a>
-        
-        <a href="#contact">Contact</a>
-      </nav>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="brand">Ersen'S Joseph</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
-
-  <div class="page" id="top">
-    <aside class="sidebar">
-      
-
-      <div class="card">
-        <!-- Replace this div with: <img src="material/headshot.jpg" alt="Ersen'S Joseph" class="profile-photo" /> -->
-        <div class="profile-placeholder">Add your photo</div>
-        <div class="sidebar-body">
-          <h1>Ersen'S Joseph</h1>
-          <p class="sidebar-role">Engineer II<br />Woods Hole Oceanographic Institution</p>
-          <ul class="sidebar-links">
-            <li class="plain"> Woods Hole, Massachusetts</li>
-            <li><a href="mailto:ersens.joseph@whoi.edu" ersens.joseph@whoi.edu</a></li>
-            
-            <li><a href="JOSEPH_ErsenS_CV_2026.pdf" target="_blank" rel="noopener" CV (PDF)</a></li>
-          </ul>
-        </div>
-      </div>
-    </aside>
-
-    <main class="main">
-      <section class="card section-card" id="about">
-        <h2>About</h2>
-        <div class="split">
-            <p>
-              I am a Mechanical Engineer working on dynamic mooring analysis, 
-              computational fluid dynamics, and autonomous surface vehicle operations in support of sustained ocean observation. 
-              I am motivated by the intersection of precision engineering and ocean science.
-            </p>
-          
-          </div>
-      </section>
-
-      <section class="card section-card" id="research">
-        <h2>Research</h2>
-        <ul>
-          <li>Deep-water and shallow-water mooring system design and analysis</li>
-          <li>Computational fluid dynamics for marine structures</li>
-          <li>Vortex-induced vibration suppression</li>
-          <li>Autonomous surface and underwater vehicles</li>
-          <li>Ocean observing systems and engineering support</li>
-        </ul>
-
-          </section>
-<section class="card section-card" id="roles">
-        <h3>Current Roles</h3>
-        <ul>
-          <li>Engineer II, <a href="https://whoi.edu" target="_blank" rel="noopener">Woods Hole Oceanographic Institution</a></li>
-          <li>Member, <a href="https://https://www.mtsociety.org/buoy-technology-committee" target="_blank" rel="noopener">MTS Buoy Technology</a></li>
-          
-        </ul>
-      </section>
-
-      
-
-      <section class="card section-card" id="contact">
-        <h2>Contact</h2>
-        <p><a href="mailto:ersens.joseph@whoi.edu">ersens.joseph@whoi.edu</a></p>
-      </section>
-    </main>
   </div>
+</header>
 
-  <footer>© 2026 Ersen'S Joseph</footer>
+<div class="page">
 
-  <script>
-    const sections = document.querySelectorAll('[id]');
-    const navLinks = document.querySelectorAll('.nav-links a');
+  <aside class="card">
+    <div class="profile-placeholder">Add your photo</div>
 
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 90) current = section.id;
-      });
+    <div class="sidebar-body">
+      <h1>Ersen'S Joseph</h1>
+      <p>Engineer II<br>Woods Hole Oceanographic Institution</p>
 
-      navLinks.forEach(link => {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-      });
-    });
-  </script>
+      <ul class="sidebar-links">
+        <li>📍 Woods Hole, Massachusetts</li>
+
+        <li>
+          <a href="mailto:ersens.joseph@whoi.edu">
+            ersens.joseph@whoi.edu
+          </a>
+        </li>
+
+        <!-- ✅ CV opens in new tab -->
+        <li>
+          <a href="JOSEPH_ErsenS_CV_2026.pdf" target="_blank" rel="noopener">
+            📄 CV (PDF)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <section class="card section-card" id="about">
+      <h2>About</h2>
+      <p>
+        I am a Mechanical Engineer working on dynamic mooring analysis,
+        computational fluid dynamics, and autonomous surface vehicle operations.
+      </p>
+    </section>
+
+    <section class="card section-card" id="research">
+      <h2>Research</h2>
+      <ul>
+        <li>Deep-water mooring design</li>
+        <li>Computational fluid dynamics</li>
+        <li>Vortex-induced vibration</li>
+      </ul>
+    </section>
+
+    <section class="card section-card" id="projects">
+      <h2>Projects</h2>
+      <p>Selected engineering work and analysis.</p>
+    </section>
+
+    <section class="card section-card" id="contact">
+      <h2>Contact</h2>
+      <p>
+        <a href="mailto:ersens.joseph@whoi.edu">
+          ersens.joseph@whoi.edu
+        </a>
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<footer>© 2026 Ersen'S Joseph</footer>
+
 </body>
 </html>
