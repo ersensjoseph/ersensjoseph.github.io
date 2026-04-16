@@ -2,449 +2,554 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ersen'S Joseph | Mechanical Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <meta name="description" content="Ersen'S Joseph | Mechanical Engineer at Woods Hole Oceanographic Institution" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #dce8ec;
-      --card-bg: #ffffff;
-      --sidebar-bg: #ffffff;
-      --link: #2e7d9e;
-      --link-hover: #1a5c78;
-      --text: #222;
-      --muted: #555;
-      --border: #e0e0e0;
-      --heading: #1a1a1a;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
+    :root {
+      --bg: #dbe8ec;
+      --card: #ffffff;
+      --text: #222;
+      --muted: #5c6670;
+      --line: #e4eaee;
+      --accent: #2e7d9e;
+      --accent-dark: #1c5f7a;
+      --shadow: 0 2px 10px rgba(20, 40, 55, 0.08);
+      --radius: 10px;
+      --max: 1120px;
+    }
+
     body {
-      font-family: 'Source Sans 3', system-ui, sans-serif;
+      margin: 0;
+      font-family: "Source Sans 3", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
       font-size: 16px;
       line-height: 1.65;
-      min-height: 100vh;
     }
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0;
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 54px;
+      display: flex;
+      align-items: center;
       background: rgba(255,255,255,0.96);
       border-bottom: 1px solid rgba(0,0,0,0.08);
-      backdrop-filter: blur(6px);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      padding: 0 2rem;
-      height: 52px;
-      gap: 2rem;
+      backdrop-filter: blur(8px);
     }
 
-    .nav-brand {
-      font-weight: 700;
-      font-size: 1.05rem;
-      color: var(--heading);
-      text-decoration: none;
-      margin-right: auto;
-    }
-
-    nav a {
-      font-size: 0.92rem;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      padding-bottom: 2px;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: var(--link);
-      border-bottom-color: var(--link);
-    }
-
-    /* LAYOUT */
-    .page {
-      display: flex;
-      gap: 1.25rem;
-      max-width: 1100px;
+    .nav-inner {
+      width: min(var(--max), calc(100% - 2rem));
       margin: 0 auto;
-      padding: 72px 1.5rem 3rem;
-      align-items: flex-start;
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-      width: 280px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 64px;
-    }
-
-    .sidebar-card {
-      background: var(--sidebar-bg);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-    }
-
-    .sidebar-photo {
-      width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-      background: #d0dde3;
-    }
-
-    .photo-placeholder {
-      width: 100%;
-      aspect-ratio: 4/3;
-      background: #c8d8de;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      color: #8aacb8;
-      font-size: 0.8rem;
+      gap: 1.6rem;
     }
 
-    .photo-placeholder svg {
-      width: 44px; height: 44px;
-      stroke: #8aacb8; fill: none; stroke-width: 1.2;
-    }
-
-    .sidebar-info {
-      padding: 1.1rem 1.25rem 1.4rem;
-    }
-
-    .sidebar-info h1 {
-      font-size: 1.3rem;
+    .brand {
+      margin-right: auto;
+      color: #1a1a1a;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: var(--heading);
-      margin-bottom: 0.2rem;
-      line-height: 1.2;
+      text-decoration: none;
     }
 
-    .sidebar-info .role {
-      font-size: 0.88rem;
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #2a2a2a;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 2px;
+      transition: color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 72px 0 40px;
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 66px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .sidebar-hero {
+      margin-bottom: 1.25rem;
+    }
+
+    .banner {
+      position: relative;
+      aspect-ratio: 16 / 5;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #87a9ba, #557789);
+    }
+
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .banner-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0.55rem 0.85rem;
+      font-size: 0.8rem;
+      color: #fff;
+      background: linear-gradient(to top, rgba(0,0,0,0.55), rgba(0,0,0,0));
+    }
+
+    .profile-placeholder,
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #c8d8de;
+      display: grid;
+      place-items: center;
+      color: #6f8d99;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .sidebar-body {
+      padding: 1.1rem 1.2rem 1.3rem;
+    }
+
+    .sidebar-body h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.15;
+      color: #1a1a1a;
+    }
+
+    .sidebar-role {
+      margin: 0.35rem 0 0.9rem;
       color: var(--muted);
-      line-height: 1.5;
-      margin-bottom: 0;
+      font-size: 0.92rem;
+      line-height: 1.45;
     }
 
     .sidebar-links {
       list-style: none;
-      margin-top: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.9rem;
+      color: #444;
     }
 
     .sidebar-links li {
-      font-size: 0.88rem;
-      color: #444;
       display: flex;
+      gap: 0.35rem;
       align-items: baseline;
-      gap: 0.3rem;
     }
 
-    .sidebar-links li.plain::before { content: none; }
-
     .sidebar-links li:not(.plain)::before {
-      content: '›';
-      color: var(--link);
+      content: "›";
+      color: var(--accent);
       font-weight: 700;
       flex-shrink: 0;
     }
 
-    .sidebar-links a {
-      color: var(--link);
-      text-decoration: none;
-    }
-    .sidebar-links a:hover { text-decoration: underline; }
-
-    /* MAIN CONTENT */
     .main {
-      flex: 1;
       min-width: 0;
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 1.25rem;
     }
 
-    /* CARDS */
-    .card {
-      background: var(--card-bg);
-      border-radius: 10px;
-      padding: 1.75rem 2rem;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    .section-card {
+      padding: 1.7rem 1.9rem;
     }
 
-    .card h2 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--heading);
-      margin-bottom: 0.9rem;
+    h2 {
+      margin: 0 0 0.8rem;
+      font-size: 1.3rem;
+      line-height: 1.2;
+      color: #1a1a1a;
     }
 
-    .card p {
-      color: #333;
-      margin-bottom: 0.6rem;
-      font-size: 0.97rem;
-    }
-    .card p:last-child { margin-bottom: 0; }
-
-    .card ul {
-      padding-left: 1.4rem;
-      margin-bottom: 0.5rem;
-    }
-    .card ul li {
-      color: #333;
-      font-size: 0.97rem;
-      margin-bottom: 0.25rem;
-    }
-
-    .card a { color: var(--link); text-decoration: none; }
-    .card a:hover { text-decoration: underline; }
-
-    /* Sub-headings inside cards */
-    .card h3 {
+    h3 {
+      margin: 1.1rem 0 0.4rem;
       font-size: 1rem;
-      font-weight: 700;
-      color: var(--heading);
-      margin: 1.2rem 0 0.4rem;
+      color: #1f2930;
     }
-    .card h3:first-child { margin-top: 0; }
 
-    /* Roles list */
-    .roles-list { list-style: none; padding-left: 0; }
-    .roles-list li {
+    p {
+      margin: 0 0 0.65rem;
+      color: #2d353b;
+      font-size: 0.98rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 1.3rem;
+    }
+
+    li {
+      margin-bottom: 0.28rem;
+      color: #2d353b;
       font-size: 0.97rem;
-      padding-left: 1rem;
-      position: relative;
-      margin-bottom: 0.25rem;
-      color: #333;
-    }
-    .roles-list li::before {
-      content: '›';
-      position: absolute; left: 0;
-      color: var(--link);
-      font-weight: 700;
     }
 
-    /* Globe / image inside card */
-    .card-image {
-      margin-top: 1rem;
-      border-radius: 6px;
+    .split {
+      display: block;
+    }
+
+    .image-box {
+      border-radius: 8px;
       overflow: hidden;
+      background: #d3e1e7;
       max-width: 420px;
     }
-    .card-image img { width: 100%; display: block; }
 
-    /* Projects */
-    .project-item { margin-bottom: 1.3rem; }
-    .project-item:last-child { margin-bottom: 0; }
-    .project-meta {
-      font-size: 0.78rem;
+    .image-box img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .small-note {
+      font-size: 0.82rem;
       color: var(--muted);
-      margin-bottom: 0.1rem;
+      margin-top: 0.45rem;
+    }
+
+    .plain-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .plain-list li {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .plain-list li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .project-item {
+      margin-bottom: 1.15rem;
+    }
+
+    .project-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
       font-style: italic;
+      margin-bottom: 0.08rem;
     }
+
     .project-item h3 {
-      margin-top: 0 !important;
-      margin-bottom: 0.2rem;
+      margin: 0 0 0.2rem;
+      font-size: 1.03rem;
     }
-    .project-item p { margin-bottom: 0; }
 
-    /* Publications */
-    .pub-item { margin-bottom: 1rem; font-size: 0.95rem; line-height: 1.6; }
-    .pub-item:last-child { margin-bottom: 0; }
-    .pub-title { font-weight: 700; color: var(--heading); }
-    .pub-venue { color: var(--muted); font-style: italic; }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
 
-    /* Updates */
-    .updates-list { list-style: none; padding-left: 0; }
+    .photo-tile {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #d2dfe5;
+    }
+
+    .photo-tile img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      padding: 0.45rem 0.55rem 0.55rem;
+      font-size: 0.85rem;
+      color: #37434b;
+      background: #f7fafb;
+    }
+
+    .updates-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
     .updates-list li {
       padding: 0.35rem 0;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 0.95rem;
-      color: #333;
+      border-bottom: 1px solid #f0f3f5;
+      margin: 0;
     }
-    .updates-list li:last-child { border-bottom: none; }
-    .year { font-weight: 700; color: var(--link); margin-right: 0.35rem; }
 
-    /* Contact */
-    .contact-info { font-size: 0.97rem; color: #333; }
-    .contact-info p { margin-bottom: 0.4rem; }
+    .updates-list li:last-child {
+      border-bottom: none;
+    }
 
-    /* FOOTER */
+    .year {
+      color: var(--accent);
+      font-weight: 700;
+      margin-right: 0.35rem;
+    }
+
     footer {
       text-align: center;
-      padding: 1.5rem;
-      font-size: 0.78rem;
-      color: #8aacb8;
+      padding: 0 1rem 1.6rem;
+      color: #7a8d97;
+      font-size: 0.8rem;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 700px) {
-      .page { flex-direction: column; padding: 64px 1rem 2rem; }
-      .sidebar { width: 100%; position: static; }
-      nav { gap: 1rem; padding: 0 1rem; }
-      .nav-brand { display: none; }
+    @media (max-width: 860px) {
+      .page,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav {
+        height: auto;
+      }
+
+      .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.7rem;
+        padding: 0.8rem 0;
+      }
+
+      .brand {
+        margin-right: 0;
+      }
+
+      .page {
+        padding-top: 92px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-card {
+        padding: 1.25rem;
+      }
     }
   </style>
 </head>
 <body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">Ersen'S Joseph</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about" class="active">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-brand">Ersen'S Joseph</a>
-    <a href="#about" class="active">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#publications">Publications</a>
-    <a href="#updates">Updates</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="page">
-
-    <!-- SIDEBAR -->
+  <div class="page" id="top">
     <aside class="sidebar">
-      <div class="sidebar-card">
-        <!-- Replace this div with: <img src="material/headshot.jpg" alt="Ersen'S Joseph" class="sidebar-photo"> -->
-        <div class="photo-placeholder">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-          </svg>
-          Add your photo
-        </div>
-        <div class="sidebar-info">
+      
+
+      <div class="card">
+        <!-- Replace this div with: <img src="material/headshot.jpg" alt="Ersen'S Joseph" class="profile-photo" /> -->
+        <div class="profile-placeholder">Add your photo</div>
+        <div class="sidebar-body">
           <h1>Ersen'S Joseph</h1>
-          <p class="role">Engineer II<br>
-          Woods Hole Oceanographic Institution</p>
+          <p class="sidebar-role">Engineer II<br />Woods Hole Oceanographic Institution</p>
           <ul class="sidebar-links">
             <li class="plain">📍 Woods Hole, Massachusetts</li>
             <li><a href="mailto:ersens.joseph@whoi.edu">ersens.joseph@whoi.edu</a></li>
-            <li><a href="material/CV.pdf">CV (PDF)</a></li>
+            
+            <li><a href="material/CV.pdf" target="_blank" rel="noopener">CV (PDF)</a></li>
           </ul>
         </div>
       </div>
     </aside>
 
-    <!-- MAIN -->
     <main class="main">
-
-      <!-- ABOUT -->
-      <div class="card" id="about">
+      <section class="card section-card" id="about">
         <h2>About</h2>
-        <p>
-          I am a Mechanical Engineer. My work spans dynamic mooring analysis, computational fluid dynamics, and autonomous surface vehicle operations in support of sustained ocean observation.
-        </p>
-        <p>
-          My M.S. research at University of Massachusetts focused on vortex-induced vibration (VIV) suppression in marine stretch hose moorings using helical grooves, demonstrating up to 90% VIV reduction and ~30% drag reduction through large-eddy simulation (LES) CFD.
-        </p>
-        <p>
-          I am motivated by the intersection of precision engineering and ocean science.
+        <div class="split">
+            <p>
+              I am a Mechanical Engineer working on dynamic mooring analysis, computational fluid dynamics, and autonomous surface vehicle operations in support of sustained ocean observation.
+            </p>
+            <p>
+              My M.S. research at the University of Massachusetts focused on vortex-induced vibration suppression in marine stretch hose moorings using helical grooves, demonstrating up to 90% VIV reduction and roughly 30% drag reduction through large-eddy simulation CFD.
+            </p>
+            <p>
+              I am motivated by the intersection of precision engineering and ocean science.
+            </p>
+          </div>
+      </section>
 
-        <h3>Research Interests</h3>
+      <section class="card section-card" id="research">
+        <h2>Research</h2>
         <ul>
           <li>Deep-water and shallow-water mooring system design and analysis</li>
-          <li>Computational fluid dynamics (CFD) for marine structures</li>
-          <li>Vortex-induced vibration (VIV) suppression</li>
+          <li>Computational fluid dynamics for marine structures</li>
+          <li>Vortex-induced vibration suppression</li>
           <li>Autonomous surface and underwater vehicles</li>
-          <li>Ocean observing systems and technology</li>
+          <li>Ocean observing systems and engineering support</li>
         </ul>
 
         <h3>Current Roles</h3>
-        <ul class="roles-list">
-          <li>Engineer II, <a href="https://uop.whoi.edu" target="_blank">WHOI Upper Ocean Processes Group</a></li>
-          <li>Mooring analyst, <a href="https://uop.whoi.edu/currentprojects/SAFARI/SAFARI.html" target="_blank">UOP SAFARI Project</a></li>
+        <ul class="plain-list">
+          <li>Engineer II, <a href="https://uop.whoi.edu" target="_blank" rel="noopener">WHOI Upper Ocean Processes Group</a></li>
+          <li>Mooring analyst, <a href="https://uop.whoi.edu/currentprojects/SAFARI/SAFARI.html" target="_blank" rel="noopener">UOP SAFARI Project</a></li>
           <li>Mooring analyst, Endurance Energy Mooring (OOI / Juan de Fuca Ridge)</li>
         </ul>
+      </section>
 
-        
-      <!-- PROJECTS -->
-      <div class="card" id="projects">
+      <section class="card section-card" id="projects">
         <h2>Projects</h2>
 
         <div class="project-item">
-          <p class="project-meta">Deep-water mooring · ~6,000 m · North Pacific · ONR-funded · Joint WHOI–Scripps</p>
+          <div class="project-meta">Deep-water mooring · ~6,000 m · North Pacific · ONR-funded · Joint WHOI–Scripps</div>
           <h3>SAFARI Mooring System</h3>
-          <p>Dynamic mooring analysis for a deep-water mooring at ~6,000 m in the North Pacific. Assessed Wirewalker downweight configurations, developed JONSWAP sea state load cases, and identified critical failure risks in conventional downweight setups at full ocean depth.</p>
+          <p>Dynamic mooring analysis for a deep-water mooring at full ocean depth. Assessed Wirewalker downweight configurations, developed JONSWAP sea-state load cases, and identified critical failure risks in conventional downweight setups.</p>
         </div>
 
         <div class="project-item">
-          <p class="project-meta">Shallow-water mooring · 32 m · Nantucket Sound · DOE-funded</p>
+          <div class="project-meta">Shallow-water mooring · 32 m · Nantucket Sound · DOE-funded</div>
           <h3>WFIP-3 LiDAR Buoy Mooring</h3>
-          <p>Engineered a shallow-water mooring for an offshore wind LiDAR buoy in Nantucket Sound. Balanced simulation recommendations against site footprint constraints, producing a functional mooring with documented hardware stress margins.</p>
+          <p>Engineered a shallow-water mooring for an offshore wind LiDAR buoy, balancing simulation recommendations against site footprint constraints while documenting hardware stress margins.</p>
         </div>
 
         <div class="project-item">
-          <p class="project-meta">Mooring analysis · ~2,300 m · Juan de Fuca Ridge · In progress</p>
+          <div class="project-meta">Mooring analysis · ~2,300 m · Juan de Fuca Ridge · In progress</div>
           <h3>Endurance Energy Mooring</h3>
-          <p>Ongoing ProteusDS dynamic mooring analysis for a MOBS single-leg surface expression mooring near the Juan de Fuca Ridge. Developing current velocity profiles from OOI RCA ADCP data, including surface extrapolation and formal load case documentation.</p>
+          <p>Ongoing ProteusDS dynamic mooring analysis for a MOBS single-leg surface expression mooring, including current profile development from OOI RCA ADCP data and formal load case documentation.</p>
         </div>
 
         <div class="project-item">
-          <p class="project-meta">CFD simulation · ANSYS Fluent · JTECH</p>
+          <div class="project-meta">CFD simulation · ANSYS Fluent · APEX float study</div>
           <h3>APEX Float Vortex Shedding Investigation</h3>
-          <p>CFD investigation into Strouhal-frequency vortex shedding driving ~0.3 Hz accelerometer oscillations in APEX profiling floats. Included geometry reconstruction in Inventor, poly-hexcore meshing (~1.54 M cells), steady RANS (SST k-ω), and transient URANS analysis.</p>
+          <p>CFD investigation into Strouhal-frequency vortex shedding linked to accelerometer oscillations in APEX profiling floats, including geometry reconstruction, meshing, steady RANS, and transient URANS analysis.</p>
         </div>
 
         <div class="project-item">
-          <p class="project-meta">Subsurface mooring · 40–80 m · OMI Ghana</p>
+          <div class="project-meta">Subsurface mooring · 40–80 m · OMI Ghana</div>
           <h3>Ghana Subsurface Mooring Analysis</h3>
-          <p>Engineering analysis for subsurface moorings at three depths (40/60/80 m). Produced knockdown analysis, current profiles, float buoyancy assessments, and pass/fail documentation. Developed a field installation guide for UT30 met tower concrete foundations.</p>
+          <p>Produced knockdown analysis, current profiles, float buoyancy assessments, pass/fail documentation, and a field installation guide for UT30 met tower concrete foundations.</p>
         </div>
 
         <div class="project-item">
-          <p class="project-meta">M.S. thesis · UMass Dartmouth · LES CFD</p>
+          <div class="project-meta">M.S. thesis · UMass Dartmouth · LES CFD</div>
           <h3>VIV Suppression in Marine Stretch Hose Moorings</h3>
-          <p>Graduate research using large-eddy simulation to evaluate helical groove geometry for VIV suppression in marine stretch hose moorings. Demonstrated up to 90% VIV and lift force reduction alongside ~30% drag reduction.</p>
+          <p>Graduate research evaluating helical groove geometry for VIV suppression in marine stretch hose moorings, demonstrating major reductions in VIV, lift forces, and drag.</p>
         </div>
-      </div>
+      </section>
+
       
 
-      <!-- CONTACT -->
-      <div class="card" id="contact">
+      
+
+      <section class="card section-card" id="contact">
         <h2>Contact</h2>
-        <div class="contact-info">
-          <p><a href="mailto:ersens.joseph@whoi.edu">ersens.joseph@whoi.edu</a></p>
-      
-          <p>Upper Ocean Processes Group<br>
-          Woods Hole Oceanographic Institution<br>
-          Woods Hole, MA 02543</p>
-        </div>
-      </div>
-
+        <p><a href="mailto:ersens.joseph@whoi.edu">ersens.joseph@whoi.edu</a></p>
+        <p>
+          Upper Ocean Processes Group<br />
+          Woods Hole Oceanographic Institution<br />
+          Woods Hole, MA 02543
+        </p>
+      </section>
     </main>
   </div>
 
   <footer>© Ersen'S Joseph · Woods Hole Oceanographic Institution</footer>
 
   <script>
-    // Highlight active nav link on scroll
     const sections = document.querySelectorAll('[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
     window.addEventListener('scroll', () => {
       let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 80) current = s.id;
+      sections.forEach(section => {
+        if (window.scrollY >= section.offsetTop - 90) current = section.id;
       });
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
       });
     });
   </script>
-
 </body>
 </html>
