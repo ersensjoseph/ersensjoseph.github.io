@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ersen'S Joseph | Mechanical Engineer</title>
+  <title>Ersen S. Joseph | Mechanical Engineer</title>
+  <meta name="description" content="Ersen S. Joseph — Mechanical Engineer at Woods Hole Oceanographic Institution. Research in mooring analysis, CFD, and autonomous marine vehicles." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -13,194 +16,227 @@
     :root {
       --bg: #dbe8ec;
       --card: #ffffff;
-      --text: #222;
-      --muted: #5c6670;
-      --accent: #2e7d9e;
+      --text: #1f2933;
+      --muted: #4f5d6b;
+      --accent: #146c8f;
+      --accent-hover: #0f5875;
+      --border: #d5dde3;
       --shadow: 0 2px 10px rgba(20, 40, 55, 0.08);
-      --radius: 10px;
+      --radius: 12px;
       --max: 1120px;
     }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: "Source Sans 3", system-ui, sans-serif;
+      line-height: 1.6;
       background: var(--bg);
       color: var(--text);
     }
 
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus-visible {
+      color: var(--accent-hover);
+      text-decoration: underline;
+    }
 
     .nav {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
-      height: 54px;
-      display: flex;
-      align-items: center;
-      background: white;
-      border-bottom: 1px solid #ddd;
       z-index: 1000;
+      background: #ffffffee;
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
       width: min(var(--max), calc(100% - 2rem));
       margin: 0 auto;
+      min-height: 60px;
       display: flex;
-      gap: 1.5rem;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      padding: 0.5rem 0;
     }
 
     .brand {
       margin-right: auto;
       font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
     }
 
-    .nav-links a {
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
       font-weight: 600;
     }
 
     .page {
       width: min(var(--max), calc(100% - 2rem));
       margin: 0 auto;
-      padding: 72px 0;
+      padding: 1rem 0 2rem;
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 300px 1fr;
       gap: 1.2rem;
+      align-items: start;
     }
 
     .card {
       background: var(--card);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-    }
-
-    .sidebar-body {
-      padding: 1.2rem;
+      border: 1px solid var(--border);
     }
 
     .profile-placeholder {
-      height: 200px;
-      background: #c8d8de;
+      min-height: 220px;
+      background: linear-gradient(145deg, #c9d8df, #d8e4ea);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #6f8d99;
+      color: #3d6070;
+      font-weight: 600;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+    }
+
+    .sidebar-body { padding: 1.2rem; }
+
+    .sidebar-body h1 {
+      line-height: 1.2;
+      margin: 0 0 0.6rem;
+    }
+
+    .role {
+      color: var(--muted);
+      margin-top: 0;
+      margin-bottom: 1rem;
     }
 
     .sidebar-links {
       list-style: none;
       padding: 0;
       margin: 0;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
     }
 
-    /* 🔥 arrows removed here */
-    .sidebar-links li {
-      margin-bottom: 0.4rem;
-    }
+    .sidebar-links li { margin-bottom: 0.45rem; }
 
     .main {
       display: grid;
       gap: 1.2rem;
     }
 
-    .section-card {
-      padding: 1.5rem;
+    .section-card { padding: 1.4rem 1.5rem; }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
     }
 
-    h2 { margin-top: 0; }
+    .research-list {
+      margin: 0.2rem 0 0;
+      padding-left: 1.2rem;
+    }
 
     footer {
       text-align: center;
-      font-size: 0.8rem;
-      color: #777;
+      font-size: 0.9rem;
+      color: var(--muted);
       padding: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        justify-content: center;
+      }
+
+      .brand {
+        width: 100%;
+        margin-right: 0;
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
-
-<header class="nav">
-  <div class="nav-inner">
-    <a href="#" class="brand">Ersen'S Joseph</a>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#about" class="brand">Ersen S. Joseph</a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="page">
+  <div class="page">
+    <aside class="card" aria-label="Profile summary">
+      <div class="profile-placeholder">Add your professional photo</div>
 
-  <aside class="card">
-    <div class="profile-placeholder">Add your photo</div>
+      <div class="sidebar-body">
+        <h1>Ersen S. Joseph</h1>
+        <p class="role">Engineer II<br />Woods Hole Oceanographic Institution</p>
 
-    <div class="sidebar-body">
-      <h1>Ersen'S Joseph</h1>
-      <p>Engineer II<br>Woods Hole Oceanographic Institution</p>
+        <ul class="sidebar-links">
+          <li>Woods Hole, Massachusetts, USA</li>
+          <li><a href="mailto:ersens.joseph@whoi.edu">ersens.joseph@whoi.edu</a></li>
+          <li><a href="JOSEPH_ErsenS_CV_2026.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
+        </ul>
+      </div>
+    </aside>
 
-      <ul class="sidebar-links">
-        <li>Woods Hole, Massachusetts</li>
+    <main class="main">
+      <section class="card section-card" id="about">
+        <h2>About</h2>
+        <p>
+          I am a Mechanical Engineer focused on dynamic mooring analysis,
+          computational fluid dynamics (CFD), and autonomous surface vehicle operations.
+          My work supports reliable ocean observation systems and marine engineering projects.
+        </p>
+      </section>
 
-        <li>
-          <a href="mailto:ersens.joseph@whoi.edu">
-            ersens.joseph@whoi.edu
-          </a>
-        </li>
-
-        <!-- ✅ CV opens in new tab -->
-        <li>
-          <a href="JOSEPH_ErsenS_CV_2026.pdf" target="_blank" rel="noopener">
-         CV (PDF)
-          </a>
-        </li>
-      </ul>
-    </div>
-  </aside>
-
-  <main class="main">
-
-    <section class="card section-card" id="about">
-      <h2>About</h2>
-      <p>
-        I am a Mechanical Engineer working on dynamic mooring analysis,
-        computational fluid dynamics, and autonomous surface vehicle operations.
-      </p>
-    </section>
-
-    <section class="card section-card" id="research">
-      <h2>Research Interests</h2>
-      <ul>
-      <li>Deep-water and shallow-water mooring system design and analysis</li>
+      <section class="card section-card" id="research">
+        <h2>Research Interests</h2>
+        <ul class="research-list">
+          <li>Deep-water and shallow-water mooring system design and analysis</li>
           <li>Computational fluid dynamics for marine structures</li>
           <li>Vortex-induced vibration suppression</li>
           <li>Autonomous surface and underwater vehicles</li>
           <li>Ocean observing systems and engineering support</li>
-      </ul>
-    </section>
+        </ul>
+      </section>
 
-    <section class="card section-card" id="projects">
-      <h2>Projects</h2>
-      <p>Selected engineering work and analysis.</p>
-    </section>
+      <section class="card section-card" id="projects">
+        <h2>Projects</h2>
+        <p>Selected engineering work, analysis, and field support contributions will be listed here.</p>
+      </section>
 
-    <section class="card section-card" id="contact">
-      <h2>Contact</h2>
-      <p>
-        <a href="mailto:ersens.joseph@whoi.edu">
-          ersens.joseph@whoi.edu
-        </a>
-      </p>
-    </section>
+      <section class="card section-card" id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:ersens.joseph@whoi.edu">ersens.joseph@whoi.edu</a></p>
+      </section>
+    </main>
+  </div>
 
-  </main>
-</div>
-
-<footer>© 2026 Ersen'S Joseph</footer>
-
+  <footer>© 2026 Ersen S. Joseph</footer>
 </body>
 </html>
