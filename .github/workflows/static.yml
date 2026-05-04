@@ -1,9 +1,9 @@
- (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF'
 diff --git a/.github/workflows/static.yml b/.github/workflows/static.yml
-index 460f782006e8bb929c92b9357c59c8b1d73f18c7..1688763c9d0b1729a511ea9462125f9a62480082 100644
+index 460f782..d5dca63 100644
 --- a/.github/workflows/static.yml
 +++ b/.github/workflows/static.yml
-@@ -1,43 +1,44 @@
+@@ -1,43 +1,41 @@
 -# Simple workflow for deploying static content to GitHub Pages
  name: Deploy static content to Pages
  
@@ -29,12 +29,12 @@ index 460f782006e8bb929c92b9357c59c8b1d73f18c7..1688763c9d0b1729a511ea9462125f9a
  
  jobs:
 -  # Single deploy job since we're just deploying
-   deploy:
-     environment:
-       name: github-pages
-       url: ${{ steps.deployment.outputs.page_url }}
+-  deploy:
+-    environment:
+-      name: github-pages
+-      url: ${{ steps.deployment.outputs.page_url }}
++  build:
      runs-on: ubuntu-latest
-+
      steps:
        - name: Checkout
          uses: actions/checkout@v4
@@ -42,22 +42,21 @@ index 460f782006e8bb929c92b9357c59c8b1d73f18c7..1688763c9d0b1729a511ea9462125f9a
        - name: Setup Pages
          uses: actions/configure-pages@v5
 +
-+      - name: Build static artifact
-+        run: |
-+          mkdir -p _site
-+          cp index.html _site/
-+          cp JOSEPH_ErsenS_CV_2026.pdf _site/
-+
        - name: Upload artifact
          uses: actions/upload-pages-artifact@v3
          with:
 -          # Upload entire repository
 -          path: '.'
-+          path: _site
++          path: .
 +
++  deploy:
++    needs: build
++    environment:
++      name: github-pages
++      url: ${{ steps.deployment.outputs.page_url }}
++    runs-on: ubuntu-latest
++    steps:
        - name: Deploy to GitHub Pages
          id: deployment
          uses: actions/deploy-pages@v5
- 
 EOF
-)
