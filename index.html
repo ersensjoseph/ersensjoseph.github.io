@@ -286,34 +286,25 @@
     .news-body strong { color: var(--text); }
     .news-body .news-sub { color: var(--muted); font-size: 0.875rem; display: block; margin-top: 0.1rem; }
 
-    /* Project cards */
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
-      margin-top: 0.75rem;
-    }
 
-    .project-card {
-      border: 1px solid var(--border);
+    .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #c0dded;
       border-radius: 6px;
-      padding: 1rem 1.1rem;
-      background: var(--bg);
-      transition: box-shadow 0.15s, border-color 0.15s;
-    }
-    .project-card:hover { box-shadow: var(--shadow); border-color: #b0cdd9; }
-
-    .project-card h4 {
-      font-family: var(--font-display);
-      font-size: 1rem;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.875rem;
       font-weight: 600;
-      margin-bottom: 0.3rem;
+      margin-top: 0.25rem;
+      transition: background 0.15s, border-color 0.15s;
     }
-
-    .project-card p {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin: 0;
+    .btn-pdf:hover {
+      background: #d9ebf5;
+      border-color: #9fc8de;
+      text-decoration: none;
     }
 
     /* Footer */
@@ -508,32 +499,11 @@
       <h2>Projects</h2>
       <p>Selected engineering analysis, field support, and research contributions.</p>
 
-      <div class="project-grid">
-        <div class="project-card">
-          <h4>SAFARI Mooring</h4>
-          <p>Deep-water (~6,000 m) mooring design for a joint WHOI–Scripps ONR-funded campaign in the North Pacific. ProteusDS dynamic analysis with downweight and compliance configurations.</p>
-        </div>
-        <div class="project-card">
-          <h4>WFIP-3 Offshore Wind</h4>
-          <p>Mooring engineering support for the DOE-funded Wind Forecast Improvement Project in Nantucket Sound, including mooring design and field operations.</p>
-        </div>
-        <div class="project-card">
-          <h4>microALTO Float CFD</h4>
-          <p>LES and RANS CFD investigation of vortex shedding from the microALTO profiling float (ANSYS Fluent). Supporting Le Boyer et al. 2025, JTECH.</p>
-        </div>
-        <div class="project-card">
-          <h4>Endurance Energy Mooring</h4>
-          <p>Deepwater mooring analysis for the OOI Regional Cabled Array at Juan de Fuca Ridge (~2,300 m). Three load cases, fatigue analysis via Grosenbaugh (1995), LaTeX report.</p>
-        </div>
-        <div class="project-card">
-          <h4>VIV Suppression (Thesis)</h4>
-          <p>LES-based CFD study of helical groove VIV suppression in marine stretch hose moorings, motivated by passive acoustic monitoring for North Atlantic Right Whales.</p>
-        </div>
-        <div class="project-card">
-          <h4>OMI Ghana Mooring</h4>
-          <p>Subsurface mooring analysis (40/60/80 m cases) with ProteusDS for the Guinea Current, including corrected knockdown thresholds and revised current profiles.</p>
-        </div>
-      </div>
+      <a class="btn-pdf" href="JOSEPH_ErsenS_Engineering_Projects.pdf" target="_blank" rel="noopener noreferrer">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/></svg>
+        View Engineering Projects Portfolio (PDF)
+      </a>
+
     </section>
 
     <!-- Contact -->
